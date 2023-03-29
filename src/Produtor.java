@@ -24,7 +24,7 @@ public class Produtor implements Runnable {
     public void run() {
         while (true) {
             try {
-                //Gera um atraso aleatório com base no tempo
+                // Gera um atraso aleatório com base no tempo
                 Thread.sleep((int) (Math.random() * getTempo()));
             } catch (InterruptedException e) {
             }

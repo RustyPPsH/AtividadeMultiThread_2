@@ -1,5 +1,6 @@
 /**
- * Classe que contém o buffer a ser compartilhado entre o produto e o consumidor.
+ * Classe que contém o buffer a ser compartilhado entre o produto e o
+ * consumidor.
  *
  * @author osmar
  */
@@ -40,17 +41,17 @@ public class Compartilhado {
         while (getBuffer() <= 0) { // Buffer vazio, esperando produção
             System.out.println("Buffer Vazio, Consumidor esperando pelo produtor");
             try {
-                //Coloca a Thread em espera
+                // Coloca a Thread em espera
                 wait();
             } catch (InterruptedException e) {
             }
         }
 
-        //Consome o buffer
+        // Consome o buffer
         setBuffer(getBuffer() - 1);
 
         System.out.println("Consumidor consumindo / buffer :" + getBuffer());
-        //Notifica a Thread que foi consumido
+        // Notifica a Thread que foi consumido
         notify();
     }
 
@@ -58,19 +59,19 @@ public class Compartilhado {
      * Método que produz o buffer.
      */
     public void produzir() {
-        while (getBuffer() >= getTamanhoBuffer()) { // Buffer cheio, esperando consumir	
+        while (getBuffer() >= getTamanhoBuffer()) { // Buffer cheio, esperando consumir
             System.out.println("Buffer Cheio, Produtor esperando pelo Consumidor");
             try {
-                //Coloca a Thread em espera
+                // Coloca a Thread em espera
                 wait();
             } catch (InterruptedException e) {
             }
         }
-        //Produz o buffer
+        // Produz o buffer
         setBuffer(getBuffer() + 1);
 
         System.out.println("Produtor produzindo / buffer :" + getBuffer());
-        //Notifica a Thread que foi produzido
+        // Notifica a Thread que foi produzido
         notify();
     }
 }
